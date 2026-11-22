@@ -1,0 +1,186 @@
+/* Shir Raviv — personal site. Look carried over from the earlier site:
+   sage-grey page, Jura throughout, dark-teal venue lines, tall image beside the research list. */
+
+@font-face {
+  font-family: "Jura";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("fonts/jura-latin.woff2") format("woff2");
+}
+
+:root {
+  --bg: #e1e3e0;
+  --ink: #000;
+  --ink-soft: #2b2b2b;
+  --venue: #244d48;
+  --rule: #8d908c;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Jura", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--venue); }
+a:focus-visible { outline: 2px solid var(--venue); outline-offset: 2px; }
+
+.page {
+  max-width: 1132px;
+  margin: 0 0 0 max(0px, calc(50% - 438px));
+  padding: 64px 24px 120px;
+}
+
+/* ---------- About ---------- */
+
+h1 {
+  margin: 0 0 22px;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 247px minmax(0, 596px);
+  column-gap: 20px;
+  align-items: start;
+}
+
+.about-side img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contact {
+  margin: 22px 0 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.bio p {
+  margin: 0 0 21px;
+  text-align: justify;
+  color: var(--ink-soft);
+}
+.bio p:last-child { margin-bottom: 0; }
+.bio strong { color: var(--ink); }
+
+/* ---------- Research ---------- */
+
+.research { margin-top: 26px; }
+
+.section-title {
+  position: relative;
+  margin: 0 0 40px;
+  padding-left: 56px;
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 56px;
+  border-top: 1px solid var(--rule);
+}
+
+.research-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 349px;
+  column-gap: 32px;
+  align-items: start;
+}
+
+.papers { padding-left: 56px; }
+
+.papers h3 {
+  margin: 0 0 30px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.papers h3:not(:first-of-type) { margin-top: 42px; }
+
+.paper { margin: 0 0 22px; }
+
+.paper h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.paper p { margin: 0; }
+.paper .venue { color: var(--venue); font-weight: 500; }
+.paper .links { font-size: 14px; }
+
+.abstract summary {
+  display: inline-block;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  list-style: none;
+}
+.abstract summary::-webkit-details-marker { display: none; }
+.abstract summary:hover { color: var(--venue); }
+.abstract summary:focus-visible { outline: 2px solid var(--venue); outline-offset: 2px; }
+.abstract p {
+  margin: 8px 0 6px;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: justify;
+  color: var(--ink-soft);
+}
+
+.side-image { margin-top: -28px; }
+.side-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 960px) {
+  .page { padding: 48px 32px 80px; }
+  .research-body { grid-template-columns: minmax(0, 1fr) 220px; }
+}
+
+@media (max-width: 720px) {
+  .page { padding: 32px 20px 64px; }
+  h1 { font-size: 34px; }
+  .about { grid-template-columns: 1fr; row-gap: 24px; }
+  .about-side img { max-width: 280px; }
+  .contact { margin-top: 14px; font-size: 14px; }
+  .bio p, .abstract p { text-align: left; }
+  .section-title { padding-left: 44px; font-size: 20px; margin-bottom: 28px; }
+  .section-title::before { left: 0; width: 32px; }
+  .research { margin-top: 40px; }
+  .research-body { grid-template-columns: 1fr; }
+  .papers { padding-left: 0; }
+  .side-image { display: none; }
+}
+
+@media print {
+  body { background: #fff; }
+  .side-image { display: none; }
+}
